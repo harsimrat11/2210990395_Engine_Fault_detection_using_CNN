@@ -1,4 +1,5 @@
-# Engine Fault Detection Using Acoustic Signal Processing and CNN
+# Acoustic Signal-Based Non-Intrusive Engine Fault Detection Using Mel-Spectrograms and Convolutional Neural Networks
+
 
 A non-intrusive engine fault detection system that identifies engine conditions from audio recordings — no diagnostic tools or special hardware required, just sound.
 
