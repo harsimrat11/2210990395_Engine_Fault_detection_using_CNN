@@ -98,6 +98,8 @@ All result plots are saved in the `/results` folder.
 | `ROC_curve.png` | Multi-class ROC curves (one-vs-rest) |
 | `mel_spectrogram.png` | Example Mel-spectrogram from training data |
 | `results_tables.pdf` | Full classification report |
+| `training_vs_validation_loss.jpg` |Training vs Validation Loss for actual 25 epochs |
+| `training_vs_validation_accuracy.jpg` |Training vs Validation Accuracy for actual 25 epochs |
 
 ---
 
