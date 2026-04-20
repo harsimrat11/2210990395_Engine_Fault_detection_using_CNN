@@ -125,6 +125,23 @@ Minimum recommended:
 For faster training:
 - GPU enabled Google Colab runtime
 ---
+## Dataset
+
+This project uses the **AI Mechanic Dataset** as the primary labelled training dataset.
+
+The dataset is publicly available from its original source and is **not redistributed in this repository**.
+
+Please download it from the official source and place:
+
+ai_mechanic_dataset.zip
+
+inside the project folder before running the code.
+
+Original dataset link: [https://www.kaggle.com/datasets/eoinedge/ai-mechanic-engine-condition-audio-fault-finding]
+
+Additional real-world engine recordings were used during experimentation to improve dataset diversity and practical testing conditions. A few representative sample audio files are included in this repository for demonstration purposes. Users may also test the system using their own engine audio samples.
+
+
 ## Step 1: Install Dependencies
 Run the following command:
 ```bash
