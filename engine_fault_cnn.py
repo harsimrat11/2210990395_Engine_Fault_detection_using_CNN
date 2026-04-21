@@ -382,7 +382,21 @@ plt.ylabel("True Label")
 plt.tight_layout()
 plt.show()
 
+# Find one mechanical fault sample
+mech_idx = np.where(np.isin(y_filtered,
+         ['rattle_knock','ticking_lifters']))[0][0]
 
+plt.figure(figsize=(10,5))
+librosa.display.specshow(X_filtered[mech_idx].squeeze(),
+                         sr=SAMPLE_RATE,
+                         x_axis='time',
+                         y_axis='mel',
+                         cmap='inferno')
+
+plt.colorbar(format='%+2.1f dB')
+plt.title("Mechanical Fault - Mel-Spectrogram")
+plt.tight_layout()
+plt.show()
 # =============================================================================
 # SECTION 10: TRAINING CURVES
 # Training vs Validation Accuracy and Loss over epochs
@@ -443,6 +457,7 @@ plt.show()
 
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=SEED)
 accuracy_multi_cv = []
+f1_multi_cv = []
 
 print("Starting 5-fold stratified cross-validation for multi-class model...")
 
@@ -459,20 +474,61 @@ for fold, (train_idx_fold, val_idx_fold) in enumerate(skf.split(X_train_multi, y
                    validation_data=(X_val_fold, y_val_fold), verbose=1)
 
     _, acc = fold_model.evaluate(X_val_fold, y_val_fold, verbose=0)
+    from sklearn.metrics import f1_score
+
+y_pred_fold = np.argmax(fold_model.predict(X_val_fold), axis=1)
+f1 = f1_score(y_val_fold, y_pred_fold, average='weighted')
+
+f1_multi_cv.append(f1)
     accuracy_multi_cv.append(acc)
     print(f"Fold {fold + 1} Validation Accuracy: {acc:.4f}")
 
 mean_cv_accuracy = np.mean(accuracy_multi_cv)
+mean_cv_f1 = np.mean(f1_multi_cv)
 print(f"\nMean 5-Fold Cross-Validation Accuracy (Multi-class): {mean_cv_accuracy:.4f}")
 
+# print five fold f1 score
+print(f"Mean 5-Fold F1 Score: {mean_cv_f1:.4f}")
+
+folds = np.arange(1,6)
+bar_width = 0.35
+
+plt.figure(figsize=(10,6))
+plt.bar(folds - bar_width/2, accuracy_multi_cv, width=bar_width, label='Accuracy')
+plt.bar(folds + bar_width/2, f1_multi_cv, width=bar_width, label='F1-Score')
+
+plt.axhline(mean_cv_accuracy, linestyle='--', linewidth=2)
+plt.axhline(mean_cv_f1, linestyle='--', linewidth=2)
+
+plt.xticks(folds, [f'Fold {i}' for i in folds])
+plt.ylabel("Score")
+plt.xlabel("Fold")
+plt.title("5-Fold Cross Validation Performance")
+plt.legend()
+plt.tight_layout()
+plt.show()
+
 
 # =============================================================================
-# SECTION 13: SAMPLE MEL-SPECTROGRAM VISUALISATION
+# SECTION 13: MEL-SPECTROGRAM VISUALISATION
 # =============================================================================
+# Find one normal engine sample
+normal_idx = np.where(y_filtered == 'normal')[0][0]
 
+plt.figure(figsize=(10,5))
+librosa.display.specshow(X_filtered[normal_idx].squeeze(),
+                         sr=SAMPLE_RATE,
+                         x_axis='time',
+                         y_axis='mel',
+                         cmap='viridis')
+
+plt.colorbar(format='%+2.1f dB')
+plt.title("Normal Engine - Mel-Spectrogram")
+plt.tight_layout()
+plt.show()
 plt.figure(figsize=(6, 4))
 librosa.display.specshow(X_train_multi[0].squeeze(), cmap='magma')
-plt.title("Example Mel-Spectrogram (Training Sample)")
+plt.title("Mel-Spectrogram (Training Sample)")
 plt.colorbar()
 plt.tight_layout()
 plt.show()
