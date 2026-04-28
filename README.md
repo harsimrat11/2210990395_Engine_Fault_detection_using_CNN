@@ -14,7 +14,7 @@ Engine audio is converted into Mel-spectrograms and fed into a Convolutional Neu
 ---
 ## Abstract
 
-This project presents a non-intrusive engine fault detection system based on acoustic signal analysis. Engine audio recordings are processed into Mel-spectrogram representations and analyzed using a Convolutional Neural Network (CNN) to classify different engine conditions. The proposed model identifies normal operation and multiple fault types, including combustion, mechanical, and belt-related issues, without requiring physical sensors or diagnostic tools. Experimental results show an average accuracy of approximately 86–87% using 5-fold cross-validation, demonstrating the effectiveness of audio-based fault diagnosis as a low-cost and scalable alternative to traditional methods.
+ This project presents a non-intrusive engine fault detection system based on acoustic signal analysis. Engine audio recordings are processed into Mel-spectrogram representations and analyzed using a Convolutional Neural Network (CNN) to classify different engine conditions. The proposed model identifies normal operation and multiple fault types, including combustion, mechanical, and belt-related issues, without requiring physical sensors or diagnostic tools. Experimental results show an average accuracy of approximately 86–87% using 5-fold cross-validation, demonstrating the effectiveness of audio-based fault diagnosis as a low-cost and scalable alternative to traditional methods.
 ---
 ## Overview
 
