@@ -1,12 +1,21 @@
 # Acoustic Signal-Based Non-Intrusive Engine Fault Detection Using Mel-Spectrograms and Convolutional Neural Networks
-
+Type: Research Project  
+Student Name: Harsimrat Singh  
+Roll Number: 2210990395  
+University: Chitkara University  
+Course: Bachelors of Engineering in Computer Science and Engineering (CSE)
+Supervisor: Dr. Gurpreet Singh 
+Current Status: Submitted, Technical Checks Passed, Editor Assigned
 
 A non-intrusive engine fault detection system that identifies engine conditions from audio recordings — no diagnostic tools or special hardware required, just sound.
 
 Engine audio is converted into Mel-spectrograms and fed into a Convolutional Neural Network (CNN) trained to distinguish between normal operation and various fault types.
 
 ---
+## Abstract
 
+This project presents a non-intrusive engine fault detection system based on acoustic signal analysis. Engine audio recordings are processed into Mel-spectrogram representations and analyzed using a Convolutional Neural Network (CNN) to classify different engine conditions. The proposed model identifies normal operation and multiple fault types, including combustion, mechanical, and belt-related issues, without requiring physical sensors or diagnostic tools. Experimental results show an average accuracy of approximately 86–87% using 5-fold cross-validation, demonstrating the effectiveness of audio-based fault diagnosis as a low-cost and scalable alternative to traditional methods.
+---
 ## Overview
 
 Internal combustion engines produce consistent sound patterns during normal operation. When faults develop — misfires, knocking, worn belts, spark plug issues — these patterns change in measurable ways. Instead of relying on OBD tools or physical inspection, this project analyses those acoustic changes directly.
